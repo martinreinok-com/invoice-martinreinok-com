@@ -41,16 +41,17 @@
 }
 
 .download-pdf {
-  position: fixed;
-  top: 100px;
-  margin-left: -40px;
-  width: 45px;
-  height: 45px;
+  position: absolute;
+  top: 140px;
+  right: 110px;
+  width: 70px;
+  height: 70px;
   background: url('../images/download.svg');
-  transition: opacity 0.2s ease-in-out;
+  transition: 0.3s;
+  opacity: 0.2;
 
-  &.loading {
-    opacity: 0.3;
+  &:hover {
+    opacity: 1;
   }
 
   a {
