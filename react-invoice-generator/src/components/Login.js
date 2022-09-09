@@ -19,7 +19,6 @@ async function handleSubmit(e) {
         navigate("/invoice")
     } catch{
         setError("Log in failed")
-        navigate("/login")
     }
       
 }
