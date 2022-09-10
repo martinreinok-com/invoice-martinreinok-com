@@ -26,8 +26,12 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-            <Route path='/invoice' element={<PrivateRoute/>}>
-              <Route path='/invoice' element={<InvoicePage data={data} onChange={onInvoiceUpdated} />}/>
+            <Route 
+            path='/invoice' 
+            element={
+            <PrivateRoute>
+                <InvoicePage data={data} onChange={onInvoiceUpdated} />
+            </PrivateRoute>}>
             </Route>
             <Route path="/login" element={ <Login /> }></Route>
             <Route path="/" element={ <Login /> }></Route>
@@ -35,6 +39,7 @@ function App() {
       </Router>
     </AuthProvider>
     </div>
+    // <InvoicePage data={data} onChange={onInvoiceUpdated} />
     // <h3 className="center fs-10">Code and design by: <a href="https://github.com/tuanpham-dev" target="_blank">tuanpham-dev (GitHub)</a>, slightly modded by <a href="https://github.com/martinreinok" target="_blank">me</a> </h3>
   )
 }
