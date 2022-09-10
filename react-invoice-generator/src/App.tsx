@@ -21,20 +21,18 @@ function App() {
   const onInvoiceUpdated = (invoice: Invoice) => {
     window.localStorage.setItem('invoiceData', JSON.stringify(invoice))
   }
-  /*
-  <Route 
-            path='/invoice' 
-            element={
-            <PrivateRoute>
-                <InvoicePage data={data} onChange={onInvoiceUpdated} />
-            </PrivateRoute>}>
-  */
   return (
     <div className="app">
     <AuthProvider>
       <Router>
         <Routes>
-            <Route path='/invoice' element={<InvoicePage data={data} onChange={onInvoiceUpdated} />}> </Route>
+            <Route 
+            path='/invoice' 
+            element={
+            <PrivateRoute>
+                <InvoicePage data={data} onChange={onInvoiceUpdated} />
+            </PrivateRoute>}>
+            </Route>
             <Route path="/login" element={ <Login /> }></Route>
             <Route path="/" element={ <Login /> }></Route>
         </Routes>
