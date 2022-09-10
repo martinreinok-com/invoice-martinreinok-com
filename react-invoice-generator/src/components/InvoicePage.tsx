@@ -14,6 +14,8 @@ import Text from './Text'
 import { Font } from '@react-pdf/renderer'
 import Download from './DownloadPDF'
 import format from 'date-fns/format'
+import AddUIButton from "./AddUIButton"
+import getConfirmation  from './ResetInvoice'
 
 Font.register({
   family: 'Nunito',
@@ -136,7 +138,21 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
     }
   }, [onChange, invoice])
 
+
   return (
+    <>
+    <AddUIButton 
+      buttonClass={"button-reset-invoice"} 
+      buttonName="Reset Invoice"
+      hoverTitle={"Reset to Default"}
+      onButtonClick={getConfirmation}></AddUIButton>
+    <AddUIButton 
+      buttonClass={"button-save-invoice"} 
+      buttonName="Save Invoice"
+      hoverTitle={"Save Invoice (Does not work)"}
+      onButtonClick=""></AddUIButton>
+
+
     <Document pdfMode={pdfMode}>
       <Page className="invoice-wrapper" pdfMode={pdfMode}>
         {!pdfMode && <Download data={invoice} />}
@@ -478,6 +494,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
         </View>
       </Page>
     </Document>
+    </>
   )
 }
 
