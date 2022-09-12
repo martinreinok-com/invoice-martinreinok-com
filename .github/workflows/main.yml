@@ -17,8 +17,8 @@ jobs:
           USERNAME: ${{ secrets.SSH_USERNAME }}
           PASSWORD: ${{ secrets.SSH_PASSWORD }}
         run: |
-          //ls -lah
-          //sudo apt-get install sshpass
-          //sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USERNAME" 'rm -rf ~/public_html/invoice-martinreinok-com && mkdir ~/public_html/invoice-martinreinok-com'
+          ls -lah
+          sudo apt-get install sshpass
+          sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USERNAME" 'rm -rf ~/public_html/invoice-martinreinok-com && mkdir ~/public_html/invoice-martinreinok-com'
            
-          //sshpass -p "$PASSWORD" scp -r -o StrictHostKeyChecking=no react-invoice-generator/build/. "$USERNAME":~/public_html/invoice-martinreinok-com
+          sshpass -p "$PASSWORD" scp -r -o StrictHostKeyChecking=no build/. "$USERNAME":~/public_html/invoice-martinreinok-com

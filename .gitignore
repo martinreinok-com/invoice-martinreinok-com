@@ -8,8 +8,7 @@
 # testing
 /coverage
 
-# production
-/build
+# production: I rather build locally and upload using git runners than build using git runners (lots of trouble regarding requirements etc.)
 
 # misc
 .DS_Store

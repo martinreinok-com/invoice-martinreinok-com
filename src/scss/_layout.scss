@@ -6,11 +6,6 @@
   display: flex;
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: row;
-}
-
 .w-auto {
   width: auto !important;
 }
@@ -103,9 +98,32 @@
   width: 10%;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.invoice-footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: $color-gray;
+}
+
+.fake-mb-100 {
+  margin-bottom: 100px !important;
+}
+
 .row {
   position: relative;
   border-bottom: 1px solid $color-gray;
+}
+
+.divider {
+  border-top: 2px solid $color-gray,
 }
 
 .row__remove {

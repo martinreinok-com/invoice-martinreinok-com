@@ -174,7 +174,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               pdfMode={pdfMode}
             />
             <EditableInput
-              placeholder="Address"
+              placeholder="Oru 12, 78301 Raplamaa Märjamaa"
               value={invoice.name}
               onChange={(value) => handleChange('name', value)}
               pdfMode={pdfMode}
@@ -210,7 +210,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
         </View>
 
         <View className="flex mt-40" pdfMode={pdfMode}>
-          <View className="w-55" pdfMode={pdfMode}>
+          <View className="w-60" pdfMode={pdfMode}>
             <EditableInput
               className="bold dark mb-5"
               value={invoice.billTo}
@@ -242,9 +242,9 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-45" pdfMode={pdfMode}>
+          <View className="w-40" pdfMode={pdfMode}>
             <View className="flex mb-5" pdfMode={pdfMode}>
-              <View className="w-40" pdfMode={pdfMode}>
+              <View className="w-50" pdfMode={pdfMode}>
                 <EditableInput
                   className="bold"
                   value={invoice.invoiceTitleLabel}
@@ -252,7 +252,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-60" pdfMode={pdfMode}>
+              <View className="w-50" pdfMode={pdfMode}>
                 <EditableInput
                   placeholder="Arve number"
                   value={invoice.invoiceTitle}
@@ -262,7 +262,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               </View>
             </View>
             <View className="flex mb-5" pdfMode={pdfMode}>
-              <View className="w-40" pdfMode={pdfMode}>
+              <View className="w-50" pdfMode={pdfMode}>
                 <EditableInput
                   className="bold"
                   value={invoice.invoiceDateLabel}
@@ -270,7 +270,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-60" pdfMode={pdfMode}>
+              <View className="w-50" pdfMode={pdfMode}>
                 <EditableCalendarInput
                   value={format(invoiceDate, dateFormat)}
                   selected={invoiceDate}
@@ -285,7 +285,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               </View>
             </View>
             <View className="flex mb-5" pdfMode={pdfMode}>
-              <View className="w-40" pdfMode={pdfMode}>
+              <View className="w-50" pdfMode={pdfMode}>
                 <EditableInput
                   className="bold"
                   value={invoice.invoiceDueDateLabel}
@@ -293,7 +293,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-60" pdfMode={pdfMode}>
+              <View className="w-50" pdfMode={pdfMode}>
                 <EditableCalendarInput
                   value={format(invoiceDueDate, dateFormat)}
                   selected={invoiceDueDate}
@@ -350,7 +350,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
             <Text key={i}></Text>
           ) : (
             <View key={i} className="row flex" pdfMode={pdfMode}>
-              <View className="w-48 p-4-8 pb-10" pdfMode={pdfMode}>
+              <View className="w-48 p-4-8 pb-0" pdfMode={pdfMode}>
                 <EditableTextarea
                   className="dark"
                   rows={2}
@@ -360,7 +360,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-17 p-4-8 pb-10" pdfMode={pdfMode}>
+              <View className="w-17 p-4-8 pb-0" pdfMode={pdfMode}>
                 <EditableInput
                   className="dark right"
                   value={productLine.quantity}
@@ -368,7 +368,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-17 p-4-8 pb-10" pdfMode={pdfMode}>
+              <View className="w-17 p-4-8 pb-0" pdfMode={pdfMode}>
                 <EditableInput
                   className="dark right"
                   value={productLine.rate}
@@ -376,7 +376,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-18 p-4-8 pb-10" pdfMode={pdfMode}>
+              <View className="w-18 p-4-8 pb-0" pdfMode={pdfMode}>
                 <Text className="dark right" pdfMode={pdfMode}>
                   {calculateAmount(productLine.quantity, productLine.rate)}
                 </Text>
@@ -408,6 +408,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
             <View className="flex" pdfMode={pdfMode}>
               <View className="w-50 p-5" pdfMode={pdfMode}>
                 <EditableInput
+                  placeholder='Summa KM-ta'
                   value={invoice.subTotalLabel}
                   onChange={(value) => handleChange('subTotalLabel', value)}
                   pdfMode={pdfMode}
@@ -422,6 +423,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
             <View className="flex" pdfMode={pdfMode}>
               <View className="w-50 p-5" pdfMode={pdfMode}>
                 <EditableInput
+                  placeholder='KM (20%)'
                   value={invoice.taxLabel}
                   onChange={(value) => handleChange('taxLabel', value)}
                   pdfMode={pdfMode}
@@ -436,6 +438,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
             <View className="flex bg-gray p-5" pdfMode={pdfMode}>
               <View className="w-50 p-5" pdfMode={pdfMode}>
                 <EditableInput
+                  placeholder='Arve kokku'
                   className="bold"
                   value={invoice.totalLabel}
                   onChange={(value) => handleChange('totalLabel', value)}
@@ -459,7 +462,6 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
             </View>
           </View>
         </View>
-
         <View className="mt-20" pdfMode={pdfMode}>
           <EditableInput
             className="bold w-100"
@@ -469,7 +471,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
             pdfMode={pdfMode}
           />
           <EditableTextarea
-            className="w-100"
+            className="w-100 fake-mb-100"
             rows={2}
             placeholder='Lisainfo (vajadusel)'
             value={invoice.notes}
@@ -478,40 +480,68 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           />
         </View>
         
-        <View className="flex-container mt-40" pdfMode={pdfMode}>
-          <View className="w-15" pdfMode={pdfMode}>
+
+        <View className="flex-container mt-30 invoice-footer" pdfMode={pdfMode}>
+          <View className="w-15 ml-35 mt-20" pdfMode={pdfMode}>
+            <View className="flex" pdfMode={pdfMode}>
+              <EditableInput
+                      placeholder="Panga nimi"
+                      value={invoice.bank1}
+                      onChange={(value) => handleChange('bank1', value)}
+                      pdfMode={pdfMode}
+              />
+            </View>
             <EditableInput
                     placeholder="Panga nimi"
-                    value={invoice.bank1}
-                    onChange={(value) => handleChange('bank1', value)}
+                    value={invoice.bank2}
+                    onChange={(value) => handleChange('bank2', value)}
                     pdfMode={pdfMode}
             />
           </View>
-          <View className="w-30" pdfMode={pdfMode}>
-            <EditableInput
+          <View className="w-30 mt-20" pdfMode={pdfMode}>
+            <View className="flex" pdfMode={pdfMode}>
+              <EditableInput
+                placeholder="IBAN"
+                value={invoice.bank1IBAN}
+                onChange={(value) => handleChange('bank1IBAN', value)}
+                pdfMode={pdfMode}
+              />
+            </View>
+          <EditableInput
               placeholder="IBAN"
-              value={invoice.bank1IBAN}
-              onChange={(value) => handleChange('bank1IBAN', value)}
+              value={invoice.bank2IBAN}
+              onChange={(value) => handleChange('bank2IBAN', value)}
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-30" pdfMode={pdfMode}>
+          <View className="w-15 mt-20" pdfMode={pdfMode}>
+            <View className="flex" pdfMode={pdfMode}>
+              <EditableInput
+                placeholder="(SWIFT)"
+                value={invoice.bank1SWIFT}
+                onChange={(value) => handleChange('bank1SWIFT', value)}
+                pdfMode={pdfMode}
+              />
+            </View>
             <EditableInput
-              placeholder="IBAN"
-              value={invoice.bank1IBAN}
-              onChange={(value) => handleChange('bank1IBAN', value)}
-              pdfMode={pdfMode}
-            />
+                placeholder="(SWIFT)"
+                value={invoice.bank2SWIFT}
+                onChange={(value) => handleChange('bank2SWIFT', value)}
+                pdfMode={pdfMode}
+              />
           </View>
-          <View className="w-30" pdfMode={pdfMode}>
-            <EditableInput
-              placeholder="IBAN"
-              value={invoice.bank1IBAN}
-              onChange={(value) => handleChange('bank1IBAN', value)}
+          <View className="w-40  mr-35 mt-5" pdfMode={pdfMode}>
+            <EditableTextarea
+              className="w-100 center mb-10"
+              rows={3}
+              placeholder="Firma lisainfo, kontakt, epost, tel, www"
+              value={invoice.firmaLisainfo}
+              onChange={(value) => handleChange('firmaLisainfo', value)}
               pdfMode={pdfMode}
             />
           </View>
         </View>
+        
       </Page>
     </Document>
     </>
@@ -519,85 +549,3 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
 }
 
 export default InvoicePage
-
-
-/*
-        <View className="flex mt-40" pdfMode={pdfMode}>
-          <View className="w-75" pdfMode={pdfMode}>
-          <View className="flex" pdfMode={pdfMode}>
-              <View className="w-25" pdfMode={pdfMode}>
-                <EditableInput
-                    placeholder="Panga nimi"
-                    value={invoice.bank1}
-                    onChange={(value) => handleChange('bank1', value)}
-                    pdfMode={pdfMode}
-                />
-                <EditableInput
-                  placeholder="Panga nimi"
-                  value={invoice.bank2}
-                  onChange={(value) => handleChange('bank2', value)}
-                  pdfMode={pdfMode}
-                />
-                <EditableInput
-                  placeholder="Panga nimi"
-                  value={invoice.bank3}
-                  onChange={(value) => handleChange('bank3', value)}
-                  pdfMode={pdfMode}
-                />
-              </View>
-              <View className="w-50" pdfMode={pdfMode}>
-                <EditableInput
-                      placeholder="IBAN"
-                      value={invoice.bank1IBAN}
-                      onChange={(value) => handleChange('bank1IBAN', value)}
-                      pdfMode={pdfMode}
-                  />
-                  <EditableInput
-                    placeholder="IBAN"
-                    value={invoice.bank2IBAN}
-                    onChange={(value) => handleChange('bank2IBAN', value)}
-                    pdfMode={pdfMode}
-                  />
-                  <EditableInput
-                    placeholder="IBAN"
-                    value={invoice.bank3IBAN}
-                    onChange={(value) => handleChange('bank3IBAN', value)}
-                    pdfMode={pdfMode}
-                  />
-              </View>
-              <View className="w-20" pdfMode={pdfMode}>
-                <EditableInput
-                      placeholder="SWIFT/BIC"
-                      value={invoice.bank1SWIFT}
-                      onChange={(value) => handleChange('bank1SWIFT', value)}
-                      pdfMode={pdfMode}
-                  />
-                  <EditableInput
-                    placeholder="SWIFT/BIC"
-                    value={invoice.bank2SWIFT}
-                    onChange={(value) => handleChange('bank2SWIFT', value)}
-                    pdfMode={pdfMode}
-                  />
-                  <EditableInput
-                    placeholder="SWIFT/BIC"
-                    value={invoice.bank3SWIFT}
-                    onChange={(value) => handleChange('bank3SWIFT', value)}
-                    pdfMode={pdfMode}
-                  />
-              </View>
-            </View>
-          </View>
-          <View className="w-25" pdfMode={pdfMode}>
-              <View className="w-100" pdfMode={pdfMode}>
-              <EditableTextarea
-                    className="right"
-                    rows={4}
-                    placeholder='Lisainfo firma kohta'
-                    value={invoice.firmaLisainfo}
-                    onChange={(value) => handleChange('firmaLisainfo', value)}
-                    pdfMode={pdfMode}
-                  />
-              </View>
-            </View>
-          </View>
-*/
