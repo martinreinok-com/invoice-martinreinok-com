@@ -43,6 +43,8 @@ export const initialInvoice: Invoice = {
   currency: '€',
   notesLabel: 'Lisainfo pealkiri (vajadusel)',
   notes: 'Lisainfo (vajadusel)',
+  term: "",
+  termLabel: "",
   bank1: "",
   bank1IBAN: "",
   bank1SWIFT: "",

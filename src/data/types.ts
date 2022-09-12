@@ -44,6 +44,8 @@ export interface Invoice {
 
   notesLabel: string
   notes: string
+  term: string
+  termLabel: string
   bank1: string
   bank1IBAN: string
   bank1SWIFT: string
