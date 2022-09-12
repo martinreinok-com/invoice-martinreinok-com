@@ -174,7 +174,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               pdfMode={pdfMode}
             />
             <EditableInput
-              placeholder="Oru 12, 78301 Raplamaa Märjamaa"
+              placeholder="Address, ZIP Maakond Linn"
               value={invoice.name}
               onChange={(value) => handleChange('name', value)}
               pdfMode={pdfMode}

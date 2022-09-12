@@ -33,13 +33,13 @@ export const initialInvoice: Invoice = {
   productLines: [
     {
       description: 'Toode/Teenus',
-      quantity: '2',
+      quantity: '1',
       rate: '100.00',
     },
   ],
   subTotalLabel: 'Summa KM-ta 20%',
   taxLabel: 'KM (20%)',
-  totalLabel: 'TOTAL',
+  totalLabel: 'Arve kokku',
   currency: '€',
   notesLabel: '',
   notes: '',
