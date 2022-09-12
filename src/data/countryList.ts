@@ -1,5 +1,4 @@
 const countryList = [
-  { value: ' ', text: ' ' },
   { value: 'Bangladesh', text: 'Bangladesh' },
   { value: 'Belgium', text: 'Belgium' },
   { value: 'Burkina Faso', text: 'Burkina Faso' },

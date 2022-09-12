@@ -44,8 +44,16 @@ export interface Invoice {
 
   notesLabel: string
   notes: string
-  termLabel: string
-  term: string
+  bank1: string
+  bank1IBAN: string
+  bank1SWIFT: string
+  bank2: string
+  bank2IBAN: string
+  bank2SWIFT: string
+  bank3: string
+  bank3IBAN: string
+  bank3SWIFT: string
+  firmaLisainfo: string
 }
 
 export interface CSSClasses {
