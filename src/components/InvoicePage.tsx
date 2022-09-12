@@ -533,7 +533,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           <View className="w-40  mr-35 mt-5" pdfMode={pdfMode}>
             <EditableTextarea
               className="w-100 center mb-10"
-              rows={3}
+              rows={4}
               placeholder="Firma lisainfo, kontakt, epost, tel, www"
               value={invoice.firmaLisainfo}
               onChange={(value) => handleChange('firmaLisainfo', value)}
