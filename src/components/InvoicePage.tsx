@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, useRef } from 'react'
 import { Invoice, ProductLine } from '../data/types'
 import { initialInvoice, initialProductLine } from '../data/initialData'
 import EditableInput from './EditableInput'
@@ -15,6 +15,7 @@ import Download from './DownloadPDF'
 import format from 'date-fns/format'
 import AddUIButton from "./AddUIButton"
 import getConfirmation  from './ResetInvoice'
+import downloadDataAsJson  from './DownloadTemplate'
 
 Font.register({
   family: 'Nunito',
@@ -30,10 +31,15 @@ interface Props {
   onChange?: (invoice: Invoice) => void
 }
 
+function downloadInvoiceData(currentInvoice: Invoice) {
+  downloadDataAsJson(currentInvoice, currentInvoice.title);
+}
+
 const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   const [invoice, setInvoice] = useState<Invoice>(data ? { ...data } : { ...initialInvoice })
   const [subTotal, setSubTotal] = useState<number>()
   const [saleTax, setSaleTax] = useState<number>()
+  const inputFile = useRef<HTMLInputElement | null>(null);
 
   const dateFormat = 'MMM dd, yyyy'
   const invoiceDate = invoice.invoiceDate !== '' ? new Date(invoice.invoiceDate) : new Date()
@@ -109,6 +115,37 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
     return amount.toFixed(2)
   }
 
+  const uploadInvoiceData = () => {
+    // `current` points to the mounted file input element
+    inputFile.current?.click();
+    };
+  
+    const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const selectedFile = e.target.files?.[0]; // Use optional chaining to handle null
+    
+      if (selectedFile) {
+        // Rest of the code remains the same
+        const reader = new FileReader();
+    
+        // Define a callback function to handle the file reading
+        reader.onload = (event) => {
+          if (event.target) {
+            const fileContents = event.target.result; // This is the file content
+            try {
+              const parsedData : Invoice = JSON.parse(fileContents as string);
+              console.log('Parsed Data:', parsedData);
+              setInvoice(parsedData);
+            } catch (error) {
+              console.error('Error parsing file:', error);
+            }
+          }
+        };
+    
+        // Read the file as text or any other appropriate method
+        reader.readAsText(selectedFile);
+      }
+    };
+
   useEffect(() => {
     let subTotal = 0
 
@@ -144,12 +181,18 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
       buttonClass={"button-reset-invoice"} 
       buttonName="Reset Invoice"
       hoverTitle={"Reset to Default"}
-      onButtonClick={getConfirmation}></AddUIButton>
+      onButtonClick={() => getConfirmation()}></AddUIButton>
     <AddUIButton 
       buttonClass={"button-save-invoice"} 
       buttonName="Save Invoice"
-      hoverTitle={"Save Invoice (Does not work)"}
-      onButtonClick=""></AddUIButton>
+      hoverTitle={"Save Invoice to file"}
+      onButtonClick={() => downloadInvoiceData(invoice)}></AddUIButton>
+    <input type='file' id='file' accept='.json' ref={inputFile} onChange={handleFileInputChange} style={{display: 'none'}}/>
+    <AddUIButton 
+      buttonClass={"button-load-invoice"} 
+      buttonName="Load Invoice"
+      hoverTitle={"Load invoice from file"}
+      onButtonClick={uploadInvoiceData}></AddUIButton>
 
     <Document pdfMode={pdfMode}>
       <Page className="invoice-wrapper" pdfMode={pdfMode}>
@@ -186,7 +229,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               pdfMode={pdfMode}
             />
             <EditableInput
-              placeholder="Lisainfo (vajdusel)"
+              placeholder="VAT"
               value={invoice.companyAddress2}
               onChange={(value) => handleChange('companyAddress2', value)}
               pdfMode={pdfMode}
