@@ -406,7 +406,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           </View>
           <View className="w-50 mt-20" pdfMode={pdfMode}>
             <View className="flex" pdfMode={pdfMode}>
-              <View className="w-50 p-5" pdfMode={pdfMode}>
+              <View className="w-60 p-5" pdfMode={pdfMode}>
                 <EditableInput
                   placeholder='Summa KM-ta'
                   value={invoice.subTotalLabel}
@@ -530,11 +530,11 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                 pdfMode={pdfMode}
               />
           </View>
-          <View className="w-40  mr-35 mt-5" pdfMode={pdfMode}>
+          <View className="w-30  mr-35 mt-5" pdfMode={pdfMode}>
             <EditableTextarea
               className="w-100 center mb-10"
               rows={4}
-              placeholder="Firma lisainfo, kontakt, epost, tel, www"
+              placeholder="Firma lisainfo, kontakt, epost, tel, www (õigeks formaadiks 4 rida teksti või vastavalt tühikuid)"
               value={invoice.firmaLisainfo}
               onChange={(value) => handleChange('firmaLisainfo', value)}
               pdfMode={pdfMode}
