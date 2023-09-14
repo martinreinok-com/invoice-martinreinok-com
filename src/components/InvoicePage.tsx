@@ -216,11 +216,12 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               onChange={(value) => handleChange('companyName', value)}
               pdfMode={pdfMode}
             />
-            <EditableInput
+            <EditableTextarea
               placeholder="Aadress, ZIP Maakond Linn"
               value={invoice.name}
               onChange={(value) => handleChange('name', value)}
               pdfMode={pdfMode}
+              rows={2}
             />
             <EditableInput
               placeholder="Registrikood"
@@ -248,6 +249,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               value={invoice.title}
               onChange={(value) => handleChange('title', value)}
               pdfMode={pdfMode}
+              autoChangeSize={true}
             />
           </View>
         </View>
@@ -266,11 +268,12 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               onChange={(value) => handleChange('clientName', value)}
               pdfMode={pdfMode}
             />
-            <EditableInput
-              placeholder="Aadress"
+            <EditableTextarea
+              placeholder="Kliendi aadress"
               value={invoice.clientAddress}
               onChange={(value) => handleChange('clientAddress', value)}
               pdfMode={pdfMode}
+              rows={2}
             />
             <EditableInput
               placeholder="ZIP Maakond Vald"

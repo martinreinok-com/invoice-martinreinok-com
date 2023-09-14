@@ -212,6 +212,22 @@ const styles: CSSClasses = {
     fontSize: '20px',
   },
 
+  'fs-30': {
+    fontSize: '30px',
+  },
+
+  'fs-35': {
+    fontSize: '35px',
+  },
+
+  'fs-38': {
+    fontSize: '38px',
+  },
+
+  'fs-40': {
+    fontSize: '40px',
+  },
+
   'fs-45': {
     fontSize: '45px',
   },

@@ -8,9 +8,15 @@ interface Props {
   value?: string
   onChange?: (value: string) => void
   pdfMode?: boolean
+  autoChangeSize?: boolean
 }
 
-const EditableInput: FC<Props> = ({ className, placeholder, value, onChange, pdfMode }) => {
+const EditableInput: FC<Props> = ({ className, placeholder, value, onChange, pdfMode, autoChangeSize=false }) => {
+  
+  if (autoChangeSize) {
+    className = value && value.length > 8 ? 'fs-30 right bold' : className;
+  }
+
   return (
     <>
       {pdfMode ? (

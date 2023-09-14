@@ -27,6 +27,7 @@ const EditableTextarea: FC<Props> = ({
       ) : (
         <TextareaAutosize
           minRows={rows || 1}
+          maxRows={rows || 1}
           className={'input ' + (className ? className : '')}
           placeholder={placeholder || ''}
           value={value || ''}
