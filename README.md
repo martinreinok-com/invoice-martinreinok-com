@@ -9,5 +9,5 @@ I have made some QoL changes and changed the design according to our needs.
 This site is live at https://invoice.martinreinok.com/
 
 ## Invoice generator
-It looks like this.
+It looks like this.  
 ![InvoiceGenerator](./screenshot.png)
